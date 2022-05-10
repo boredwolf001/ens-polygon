@@ -125,7 +125,7 @@ contract Domains is ERC721URIStorage {
     }
 
     function setRecord(string calldata name, string calldata record) public {
-        if (domains[name] == msg.sender) revert Unauthorized();
+        if (msg.sender != domains[name]) revert Unauthorized();
         records[name] = record;
     }
 
